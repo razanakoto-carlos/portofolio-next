@@ -5,7 +5,7 @@ import { TypeAnimation } from 'react-type-animation'
 function Hero() {
   return ( 
     <div>
-      <div className='my-7 max-w-[1200px] h-[80vh] mx-auto flex flex-col-reverse 
+      <div className='my-7 max-w-[1200px] h-auto mx-auto flex flex-col-reverse 
       sm:flex-row justify-center align-center'>
         <div className='flex-col my-auto mx-auto md:mx-0'>
           <p className='md:text-5xl sm:text-4xl text-xl font-bold text-gray-200'>
@@ -33,7 +33,7 @@ function Hero() {
             <AiFillGithub />
             <AiFillFacebook />
           </div>
-          <div className='z-999 relative inline-flex group my-3'>
+          <div className='relative inline-flex group my-3'>
             <div className='absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-r from-[#44BCFF] via-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt'></div>
             <a href="/" title="Download CV" role='button' className='w-[190px] h-[60px] relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-primary-color font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900'>
               Download CV
