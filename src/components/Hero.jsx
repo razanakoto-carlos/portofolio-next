@@ -24,7 +24,7 @@ function Hero() {
             />
           </h1>
           <div className='flex justify-center items-center'>
-            <p className='md:text-5xl sm:text-4xl text-xl font-bold text-gray-5OO'>
+            <p className='md:text-5xl sm:text-4xl text-xl font-bold text-gray-500'>
               With 5+ years experience
             </p>
           </div>
