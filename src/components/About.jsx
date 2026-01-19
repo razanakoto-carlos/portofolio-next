@@ -9,7 +9,7 @@ function About() {
 
                 <div>
                     <div className='w-[400px] h-full'>
-                        <img src={aboutImg} className='object-cover rounded-xl h-[300px] filter grayscale-50 brightness-50' alt="aboutImg" />
+                        <img src={aboutImg} className='object-cover rounded-xl h-[300px] filter grayscale-10 brightness-50' alt="aboutImg" />
                     </div>
                 </div>
 

@@ -1,5 +1,5 @@
 import { AiFillFacebook, AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
-import profilepic from '../assets/profile6.png'
+import profilepic from '../assets/profile7.png'
 import { TypeAnimation } from 'react-type-animation'
 
 function Hero() {
