@@ -35,7 +35,7 @@ export default function Navbar() {
     "cursor-pointer transition-transform duration-300 ease-in-out hover:text-white hover:scale-110 p-2 text-2xl";
 
   return (
-    <div className="z-10 text-gray-500 flex justify-between items-center max-w-[1240px] mx-auto h-24 px-4 text-l">
+    <div className="z-10 text-gray-500 flex justify-between items-center max-w-310 mx-auto h-24 px-4 text-l">
       <h1 className="text-3xl font-bold primary-color ml-4 cursor-pointer" onClick={e => handleClick(e, "#accueil")}>R.Carlos</h1>
 
       {/* Menu desktop */}
@@ -61,7 +61,7 @@ export default function Navbar() {
         className={
           nav
             ? "text-gray-300 fixed h-full left-0 top-0 w-[60%] border-r border-r-gray-900 bg-[#202121] ease-in-out duration-600"
-            : "fixed left-[-100%]"
+            : "fixed -left-full"
         }
       >
         <h1 className="text-3xl primary-color m-4 cursor-pointer" onClick={e => handleClick(e, "#accueil")}>R.Carlos</h1>

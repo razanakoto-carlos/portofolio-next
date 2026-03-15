@@ -7,7 +7,7 @@ function Contact() {
       className="flex justify-center my-5 h-full sm:h-[70vh] items-center"
       id="contact"
     >
-      <div className="max-w-[1200px] mx-auto">
+      <div className="max-w-300 mx-auto">
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="p-6 mr-2 bg-gray-800 rounded-xl flex flex-col justify-around">
@@ -32,7 +32,7 @@ function Contact() {
             </div>
             <form
               action="https://getform.io/f/bnlxddxb"
-              className="p-6 flex flex-col justify-center max-w-[700px]"
+              className="p-6 flex flex-col justify-center max-w-175"
               method="post"
             >
               <div className="flex flex-col">
