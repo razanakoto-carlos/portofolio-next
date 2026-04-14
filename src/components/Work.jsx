@@ -1,114 +1,90 @@
 import React from "react";
+import ProjectCard from "./ProjectCard";
 
-import proj1 from "../assets/conge2.jpg";
+import proj1 from "../assets/conge.jpg";
 import proj2 from "../assets/instat2.jpg";
-import proj3 from "../assets/meteo-pc.jpg";
-import proj4 from "../assets/mini-trello.jpg";
+import proj3 from "../assets/meteo-1.jpg";
+import proj4 from "../assets/worktest.jpg";
+import proj5 from "../assets/guess.png";
 
 const projects = [
   {
-    title: "Mini Trello",
-    date: "2025",
+    title: "Wordle",
+    tag: "Projet personnel",
+    date: "2026",
     description:
-      "Drag-and-drop entre colonnes (Todo / In Progress / Done). Backend structuré en couches : routes → controllers → services. Schéma Prisma : relations Board → Column → Card + migrations. Gestion multi-board avec rôles (owner / member) et routes protégées.",
+      "Jeu de devinettes de mots inspiré de Wordle. Grille 6×5 avec retour coloré (vert, jaune, gris). Détection victoire/défaite avec bannière de résultat. Design responsive mobile, tablette et desktop.",
+    techs: ["React", "Tailwind CSS"],
+    image: proj5,
+    placeholder: "🟩",
+    link: "https://github.com/razanakoto-carlos/wordle-clone",
+    liveLink: null,
+  },
+  {
+    title: "Mini Trello",
+    tag: "Projet personnel",
+    date: "2026",
+    description:
+      "Drag-and-drop entre colonnes (Todo / In Progress / Done). Backend structuré en couches : routes → controllers → services. Schéma Prisma avec relations Board → Column → Card.",
+    techs: ["React", "Node.js", "Prisma", "PostgreSQL"],
     image: proj4,
-    alt: "mini trello",
+    placeholder: "📋",
     link: "https://github.com/razanakoto-carlos/mini-trello",
+    liveLink: null,
   },
   {
     title: "Weather App – Météo",
+    tag: "Application web",
     date: "2025",
     description:
-      "Consommation de l'API OpenWeather avec fetch() natif. Interface HTML/CSS responsive avec affichage météo en temps réel. Gestion asynchrone via async/await et gestion des erreurs. Prévisions 5 jours avec icônes dynamiques. Stack : TypeScript · HTML5 · CSS3 · OpenWeather API.",
+      "Consommation de l'API OpenWeather avec fetch() natif. Interface responsive avec affichage météo en temps réel. Prévisions 5 jours avec icônes dynamiques.",
+    techs: ["TypeScript", "HTML5", "CSS3", "OpenWeather API"],
     image: proj3,
-    alt: "weather app",
+    placeholder: "🌤️",
     link: "https://github.com/razanakoto-carlos/weather-app-typescript",
+    liveLink: null,
   },
   {
-    title: "Stage – INSTAT Madagascar",
-    date: "Décembre 2024 - Mars 2025",
+    title: "Gestion de Projets – INSTAT",
+    tag: "Stage – INSTAT Madagascar",
+    date: "Déc 2024 – Mars 2025",
     description:
-      "Réalisation d'une application de gestion de projets en Laravel et Tailwind CSS, incluant validation progressive, gestion des rôles et génération de rapports.",
+      "Application de gestion de projets avec validation progressive, gestion des rôles et génération de rapports. Réalisée en stage à l'INSTAT Madagascar.",
+    techs: ["Laravel", "PHP", "Tailwind CSS", "MySQL"],
     image: proj2,
-    alt: "gestion de projet",
+    placeholder: "📊",
     link: "https://github.com/razanakoto-carlos/gestionProjet",
+    liveLink: null,
   },
-    {
-    title: "Projet – Gestion de Congé",
+  {
+    title: "Gestion de Congé",
+    tag: "Projet académique",
     date: "2024",
     description:
-      "Conception et développement d'une application web pour la gestion des demandes et validations de congés en PHP et Bootstrap.",
+      "Application web pour la gestion des demandes et validations de congés. Architecture MVC en PHP vanilla avec Bootstrap. Workflow complet : demande → validation → notification.",
+    techs: ["PHP", "Bootstrap", "MVC", "MySQL"],
     image: proj1,
-    alt: "gestion de conge",
+    placeholder: "🏖️",
     link: "https://github.com/razanakoto-carlos/G_Conge_MVC_PHP",
+    liveLink: null,
   },
 ];
 
-function Work() {
+export default function Work() {
   return (
-    <div className="py-6 max-w-300 mx-auto" id="projets">
-      <div className="mx-auto px-4 md:px-8">
-        {/* En-tête de section — inchangé */}
-        <div className="mb-8 flex items-center justify-between gap-8">
-          <div className="flex flex-col gap-4">
-            <h2 className="text-2xl lg:text-3xl text-white">
-              Mes <span>Projets</span>
-            </h2>
-            <p className="text-gray-500">Voici mes projets les plus récents</p>
-          </div>
-        </div>
+    <section id="projets" className="max-w-5xl mx-auto px-8 py-20">
+      <p className="font-mono text-emerald-400 text-xs tracking-widest mb-2">
+        // ce que j'ai construit
+      </p>
+      <h2 className="text-2xl font-bold text-white border-b border-white/10 pb-4 mb-10">
+        Mes Projets
+      </h2>
 
-        {/* Liste des projets avec alternance image/texte */}
-        <div className="flex flex-col gap-12">
-          {projects.map((project, index) => {
-            // index pair  → image à gauche, texte à droite
-            // index impair → texte à gauche, image à droite
-            const isEven = index % 2 === 0;
-
-            return (
-              <div
-                key={index}
-                className={`flex flex-col md:flex-row items-center gap-8 ${
-                  isEven ? "" : "md:flex-row-reverse" // inverse l'ordre sur desktop
-                }`}
-              >
-                {/* IMAGE */}
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group w-full md:w-1/2 h-64 overflow-hidden rounded-2xl shadow-lg flex-shrink-0"
-                >
-                  <img
-                    src={project.image}
-                    alt={project.alt}
-                    className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
-                  />
-                </a>
-
-                {/* TEXTE */}
-                <div className="w-full md:w-1/2 text-white">
-                  <p className="text-lg font-semibold">{project.title}</p>
-                  <p className="text-gray-300 text-sm mt-1">{project.date}</p>
-                  <p className="text-gray-400 mt-3 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-block mt-4 text-sm text-blue-400 hover:underline"
-                  >
-                    Voir sur GitHub →
-                  </a>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {projects.map((project) => (
+          <ProjectCard key={project.title} project={project} />
+        ))}
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Work;

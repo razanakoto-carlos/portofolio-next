@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-130 -130 260 260">
+  <!-- outer ring -->
+  <circle fill="none" stroke="#34d399" stroke-width="14" cx="0" cy="0" r="110"/>
+
+  <!-- three arcs -->
+  <path fill="none" stroke="#34d399" stroke-width="14" stroke-linecap="round"
+        d="M 0,-110 A 110,110 0 0,1 95,55"/>
+  <path fill="none" stroke="#10b981" stroke-width="10" stroke-linecap="round"
+        d="M 95,55 A 110,110 0 0,1 -95,55"/>
+  <path fill="none" stroke="#6ee7b7" stroke-width="6" stroke-linecap="round"
+        d="M -95,55 A 110,110 0 0,1 0,-110"/>
+
+  <!-- diamond core -->
+  <polygon fill="#34d399" points="0,-40 40,0 0,40 -40,0"/>
+
+  <!-- center dot -->
+  <circle fill="#34d399" cx="0" cy="0" r="7"/>
+</svg>

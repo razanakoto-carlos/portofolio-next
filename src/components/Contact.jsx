@@ -1,80 +1,118 @@
-import React from "react";
 import { AiOutlineMail } from "react-icons/ai";
 
-function Contact() {
+export default function Contact() {
   return (
-    <div
-      className="flex justify-center my-5 h-full sm:h-[70vh] items-center"
-      id="contact"
-    >
-      <div className="max-w-300 mx-auto">
-        <div>
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="p-6 mr-2 bg-gray-800 rounded-xl flex flex-col justify-around">
-              <h1 className="text-4xl sm:text-5xl text-white">
-                Contactez<span>-moi</span>
-              </h1>
-              <p className="text-normal text-lg font-medium text-gray-200 mt-2">
-                Connectons-nous sur LinkedIn <br /> Envoyez-moi un e-mail
-              </p>
-              {/* <div className='flex items-center mt-2 text-gray-400'>
-                                <AiOutlineMail className='w-12 h-12 mr-2 text-blue-400' />
-                                    <p className='mt-3 text-xl'>Razanakoto Carlos</p>
-                            </div> */}
+    <section id="contact" className="max-w-5xl mx-auto px-8 py-20">
+      {/* Label de section */}
+      <p className="font-mono text-emerald-400 text-xs tracking-widest mb-2">
+        // travaillons ensemble
+      </p>
+      <h2 className="text-2xl font-bold text-white border-b border-white/10 pb-4 mb-12">
+        Contact
+      </h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Carte info */}
+        <div className="bg-white/3 border border-white/10 rounded-2xl p-8 flex flex-col justify-between gap-6">
+          <div>
+            <h3 className="text-2xl font-bold text-white mb-3">
+              Connectons-nous
+            </h3>
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Disponible pour des missions freelance, des stages ou des
+              opportunités en CDI. N'hésitez pas à me contacter — je réponds
+              sous 24h.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <a
+              href="mailto:razanakotocarlos24@gmail.com"
+              className="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors duration-200 group"
+            >
+              <AiOutlineMail className="text-2xl text-emerald-400 shrink-0" />
+              <span className="text-sm font-mono group-hover:underline">
+                razanakotocarlos24@gmail.com
+              </span>
+            </a>
+
+            <div className="flex gap-4 pt-2">
               <a
-                href="mailto:razanakotocarlos24@gmail.com"
+                href="https://www.linkedin.com/in/carlos-razanakoto-9013b2342"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center mt-2 text-gray-400 hover:text-blue-500 transition-colors duration-300 cursor-pointer"
+                className="font-mono text-xs text-slate-500 hover:text-emerald-400 transition-colors duration-200"
               >
-                <AiOutlineMail className="w-12 h-12 mr-2 text-blue-400" />
-                <p className="mt-3 text-xl">razanakotocarlos24@gmail.com</p>
+                LinkedIn →
+              </a>
+              <a
+                href="https://github.com/razanakoto-carlos"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs text-slate-500 hover:text-emerald-400 transition-colors duration-200"
+              >
+                GitHub →
               </a>
             </div>
-            <form
-              action="https://getform.io/f/bnlxddxb"
-              className="p-6 flex flex-col justify-center max-w-175"
-              method="post"
-            >
-              <div className="flex flex-col">
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Nom complet"
-                  className="w-100 mt-2 p-3 rounded-lg bg-gray-800 border border-gray-700 text-white"
-                />
-              </div>
-              <div className="flex flex-col mt-2">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Adresse e-mail"
-                  className="w-100 mt-2 py-3 px-3 rounded-lg bg-gray-800 border border-gray-700 text-white"
-                />
-              </div>
-              <div className="flex flex-col mt-2">
-                <textarea
-                  name="message"
-                  id="message"
-                  cols="30"
-                  rows="5"
-                  className="w-100 mt-2 py-3 px-3 rounded-lg bg-gray-800 border border-gray-700 text-white"
-                  placeholder="Votre message"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="md:w-100 bg-primary-color text-white py-3 px-6 rounded-lg mt-3"
-              >
-                Envoyer
-              </button>
-            </form>
           </div>
         </div>
+
+        {/* Formulaire */}
+        <div className="bg-white/3 border border-white/10 rounded-2xl p-8">
+          <form
+            action="https://getform.io/f/bnlxddxb"
+            method="POST"
+            className="flex flex-col gap-3"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Nom complet"
+              required
+              className="
+                w-full bg-white/4 border border-white/10 rounded-lg
+                px-4 py-3 text-white text-sm placeholder-slate-500
+                focus:outline-none focus:border-emerald-400/60
+                transition-colors duration-200
+              "
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Adresse e-mail"
+              required
+              className="
+                w-full bg-white/4 border border-white/10 rounded-lg
+                px-4 py-3 text-white text-sm placeholder-slate-500
+                focus:outline-none focus:border-emerald-400/60
+                transition-colors duration-200
+              "
+            />
+            <textarea
+              name="message"
+              rows={5}
+              placeholder="Votre message"
+              required
+              className="
+                w-full bg-white/4 border border-white/10 rounded-lg
+                px-4 py-3 text-white text-sm placeholder-slate-500
+                focus:outline-none focus:border-emerald-400/60
+                transition-colors duration-200 resize-none
+              "
+            />
+            <button
+              type="submit"
+              className="
+                w-full bg-emerald-400 hover:bg-emerald-300
+                text-slate-900 font-bold text-sm py-3 rounded-lg
+                transition-colors duration-200 mt-1
+              "
+            >
+              Envoyer le message
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Contact;

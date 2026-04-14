@@ -1,22 +1,16 @@
 import React from "react";
-import {
-  FaFacebook,
-  FaGitSquare,
-  FaInstagram,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaLinkedin, FaGitSquare, FaFacebook } from "react-icons/fa";
 
-function Footer() {
+export default function Footer() {
   return (
-    <div className="mt-12 w-max-[800px] border-t border-gray-500 text-center">
-      <p className="my-5 text-gray-500">
-        IVA 3A Ambodivonkely <span>Ambohimanarina</span>
-      </p>
-      <div className="inline-flex text-gray-500 gap-4 text-3xl">
+    <footer className="border-t border-white/10 py-10 px-8 text-center">
+      <div className="flex justify-center gap-5 text-slate-500 text-2xl mb-5">
         <a
           href="https://www.linkedin.com/in/carlos-razanakoto-9013b2342"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:text-emerald-400 transition-colors duration-200"
+          aria-label="LinkedIn"
         >
           <FaLinkedin />
         </a>
@@ -24,6 +18,8 @@ function Footer() {
           href="https://github.com/razanakoto-carlos"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:text-emerald-400 transition-colors duration-200"
+          aria-label="GitHub"
         >
           <FaGitSquare />
         </a>
@@ -31,12 +27,20 @@ function Footer() {
           href="https://www.facebook.com/carlos.dev.24"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:text-emerald-400 transition-colors duration-200"
+          aria-label="Facebook"
         >
           <FaFacebook />
         </a>
       </div>
-    </div>
+      <p className="font-mono text-slate-600 text-xs">
+        Conçu & développé par{" "}
+        <span className="text-emerald-400/70">Carlos Razanakoto</span>
+        {" "}· 2026
+      </p>
+      <p className="font-mono text-slate-700 text-[11px] mt-1">
+        React · Tailwind CSS
+      </p>
+    </footer>
   );
 }
-
-export default Footer;
