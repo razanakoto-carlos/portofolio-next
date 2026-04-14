@@ -5,7 +5,7 @@ import proj1 from "../assets/conge.jpg";
 import proj2 from "../assets/instat2.jpg";
 import proj3 from "../assets/meteo-1.jpg";
 import proj4 from "../assets/worktest.jpg";
-import proj5 from "../assets/guess.png";
+import proj5 from "../assets/guess.jpg";
 
 const projects = [
   {
