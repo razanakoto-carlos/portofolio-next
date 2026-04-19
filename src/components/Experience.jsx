@@ -38,7 +38,7 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="max-w-5xl mx-auto px-8 py-20">
+    <section id="experience" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       {/* Label de section */}
       <p className="font-mono text-emerald-400 text-xs tracking-widest mb-2">
         // parcours
@@ -48,13 +48,13 @@ export default function Experience() {
       </h2>
 
       {/* Timeline */}
-      <div className="relative ml-3 border-l-2 border-slate-800 pl-10 flex flex-col gap-10">
+      <div className="relative ml-2 sm:ml-3 border-l-2 border-slate-800 pl-6 sm:pl-10 flex flex-col gap-8 sm:gap-10">
         {experiences.map(({ title, company, dates, bullets, current }) => (
           <div key={title} className="relative">
             {/* Dot */}
             <div
               className={`
-                absolute -left-[45px] top-1 w-3.5 h-3.5 rounded-full border-2
+                absolute -left-[26px] sm:-left-[45px] top-1 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full border-2
                 ${current
                   ? "bg-emerald-400 border-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]"
                   : "bg-slate-800 border-emerald-400/50"

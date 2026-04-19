@@ -2,7 +2,7 @@ import { AiOutlineMail } from "react-icons/ai";
 
 export default function Contact() {
   return (
-    <section id="contact" className="max-w-5xl mx-auto px-8 py-20">
+    <section id="contact" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       {/* Label de section */}
       <p className="font-mono text-emerald-400 text-xs tracking-widest mb-2">
         // travaillons ensemble
@@ -104,7 +104,7 @@ export default function Contact() {
               type="submit"
               className="
                 w-full bg-emerald-400 hover:bg-emerald-300
-                text-slate-900 font-bold text-sm py-3 rounded-lg
+                text-slate-900 font-bold text-sm sm:text-base py-3 rounded-lg
                 transition-colors duration-200 mt-1
               "
             >

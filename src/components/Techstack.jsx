@@ -27,7 +27,7 @@ const stack = [
 
 export default function TechStack() {
   return (
-    <section id="stack" className="max-w-5xl mx-auto px-8 py-20">
+    <section id="stack" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       {/* Label de section */}
       <p className="font-mono text-emerald-400 text-xs tracking-widest mb-2">
         // outils & technologies
@@ -36,7 +36,7 @@ export default function TechStack() {
         Tech Stack
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {stack.map(({ icon, name, techs }) => (
           <div
             key={name}

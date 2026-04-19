@@ -11,7 +11,7 @@ export default function About() {
   return (
     <section
       id="a-propos"
-      className="max-w-5xl mx-auto px-8 py-20"
+      className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
     >
       {/* Label de section */}
       <p className="font-mono text-emerald-400 text-xs tracking-widest mb-2">
@@ -39,7 +39,7 @@ export default function About() {
           </p>
 
           {/* Stats */}
-          <div className="flex gap-4 mt-8">
+          <div className="flex flex-wrap gap-3 sm:gap-4 mt-8">
             {stats.map(({ num, label }) => (
               <div
                 key={label}

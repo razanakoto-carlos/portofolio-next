@@ -68,7 +68,7 @@ function Divider() {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 1], [0, 1, 1]);
 
   return (
-    <div ref={ref} className="max-w-5xl mx-auto px-8">
+    <div ref={ref} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.hr
         style={{ scaleX, opacity, originX: 0 }}
         className="border-white/10"

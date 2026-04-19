@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`sticky top-0 z-50 flex justify-between items-center px-10 h-16 transition-all duration-300 ${
+        className={`sticky top-0 z-50 flex justify-between items-center px-4 sm:px-6 lg:px-10 h-16 transition-all duration-300 ${
           scrolled
             ? "bg-slate-900/90 backdrop-blur-md border-b border-white/5"
             : "bg-transparent"
@@ -71,7 +71,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-y-0 left-0 z-40 w-3/5 bg-slate-900 border-r border-white/5 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-40 w-4/5 sm:w-3/5 bg-slate-900 border-r border-white/5 transform transition-transform duration-300 ease-in-out ${
           nav ? "translate-x-0" : "-translate-x-full"
         }`}
       >

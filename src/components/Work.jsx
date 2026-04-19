@@ -72,7 +72,7 @@ const projects = [
 
 export default function Work() {
   return (
-    <section id="projets" className="max-w-5xl mx-auto px-8 py-20">
+    <section id="projets" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <p className="font-mono text-emerald-400 text-xs tracking-widest mb-2">
         // ce que j'ai construit
       </p>

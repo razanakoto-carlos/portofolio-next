@@ -35,7 +35,7 @@ export default function Hero() {
   return (
     <section
       id="accueil"
-      className="max-w-5xl mx-auto px-8 pt-20 pb-16 flex flex-col-reverse sm:flex-row items-center justify-between gap-12"
+      className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col-reverse sm:flex-row items-center justify-between gap-12"
     >
       {/* ── Colonne texte ── */}
       <div
@@ -49,11 +49,11 @@ export default function Hero() {
           Bonjour, je suis
         </p>
 
-        <h1 className="text-5xl sm:text-6xl font-bold text-white leading-tight mb-3">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3">
           Razanakoto<br />Carlos.
         </h1>
 
-        <p className="font-mono text-2xl sm:text-3xl text-slate-400 mb-5">
+        <p className="font-mono text-xl sm:text-2xl lg:text-3xl text-slate-400 mb-5">
           Développeur{" "}
           <span
             className="text-emerald-400 transition-opacity duration-300"
@@ -86,7 +86,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="flex gap-5 text-slate-500">
+        <div className="flex gap-4 sm:gap-5 text-slate-500">
           <a
             href="https://www.linkedin.com/in/carlos-razanakoto-9013b2342"
             target="_blank" rel="noopener noreferrer"
@@ -123,7 +123,7 @@ export default function Hero() {
           transitionDelay: "150ms",
         }}
       >
-        <div className="relative w-64 h-64 sm:w-80 sm:h-80">
+        <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
 
           {/* Anneau rotatif émeraude */}
           <div
@@ -160,13 +160,13 @@ export default function Hero() {
           </div>
 
           {/* Badge Frontend */}
-          <div className="absolute top-4 -left-5 bg-slate-900/95 border border-white/10 rounded-lg px-3 py-1.5 flex items-center gap-2 shadow-lg backdrop-blur-sm">
+          <div className="absolute top-4 -left-2 sm:-left-5 bg-slate-900/95 border border-white/10 rounded-lg px-3 py-1.5 flex items-center gap-2 shadow-lg backdrop-blur-sm">
             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
             <span className="text-white text-xs font-medium font-mono">Frontend</span>
           </div>
 
           {/* Badge Backend */}
-          <div className="absolute bottom-6 -right-5 bg-slate-900/95 border border-white/10 rounded-lg px-3 py-1.5 flex items-center gap-2 shadow-lg backdrop-blur-sm">
+          <div className="absolute bottom-6 -right-2 sm:-right-5 bg-slate-900/95 border border-white/10 rounded-lg px-3 py-1.5 flex items-center gap-2 shadow-lg backdrop-blur-sm">
             <div className="w-2 h-2 bg-indigo-400 rounded-full animate-pulse" />
             <span className="text-white text-xs font-medium font-mono">Backend</span>
           </div>

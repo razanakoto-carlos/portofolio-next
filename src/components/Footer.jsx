@@ -3,8 +3,8 @@ import { FaLinkedin, FaGitSquare, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 py-10 px-8 text-center">
-      <div className="flex justify-center gap-5 text-slate-500 text-2xl mb-5">
+    <footer className="border-t border-white/10 py-10 px-4 sm:px-6 lg:px-8 text-center">
+      <div className="flex justify-center gap-4 sm:gap-5 text-slate-500 text-xl sm:text-2xl mb-5">
         <a
           href="https://www.linkedin.com/in/carlos-razanakoto-9013b2342"
           target="_blank"
