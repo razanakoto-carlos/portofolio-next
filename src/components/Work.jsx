@@ -6,8 +6,21 @@ import proj2 from "../assets/instat2.jpg";
 import proj3 from "../assets/meteo-1.jpg";
 import proj4 from "../assets/worktest.jpg";
 import proj5 from "../assets/guess.jpg";
+import proj6 from "../assets/expense.jpg";
 
 const projects = [
+  {
+    title: "Expense Tracker",
+    tag: "Projet personnel",
+    date: "2026",
+    description:
+      "Application fullstack de gestion de dépenses personnelles avec authentification JWT, dashboard mensuel et statistiques par catégorie. Entièrement conteneurisée avec Docker.",
+    techs: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL", "Docker"],
+    image: proj6,
+    placeholder: "💸",
+    link: "https://github.com/razanakoto-carlos/expense-tracker-app",
+    liveLink: null,
+  },
   {
     title: "Wordle",
     tag: "Projet personnel",
@@ -72,7 +85,10 @@ const projects = [
 
 export default function Work() {
   return (
-    <section id="projets" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section
+      id="projets"
+      className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+    >
       <p className="font-mono text-emerald-400 text-xs tracking-widest mb-2">
         // ce que j'ai construit
       </p>
