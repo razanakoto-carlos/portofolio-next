@@ -4,11 +4,30 @@ import ProjectCard from "./ProjectCard";
 import proj1 from "../assets/conge.jpg";
 import proj2 from "../assets/instat2.jpg";
 import proj3 from "../assets/meteo-1.jpg";
-import proj4 from "../assets/worktest.jpg";
+import proj4 from "../assets/moveCard.png";
 import proj5 from "../assets/guess.jpg";
 import proj6 from "../assets/expense.jpg";
 
 const projects = [
+    {
+    title: "Nexboard",
+    tag: "Projet personnel",
+    date: "2026",
+    description:
+      "Application Kanban full-stack inspirée de Trello avec authentification JWT (cookies httpOnly). Gestion d’état avec Zustand et TanStack Query (optimistic updates). Drag & drop fluide avec dnd-kit. Architecture backend en couches (routes → controllers → middleware) avec Prisma et PostgreSQL.", 
+    techs: [
+      "React",
+      "TypeScript",
+      "TanStack Query",
+      "dnd-kit",
+      "Express",
+      "Zustand",
+    ],
+    image: proj4,
+    placeholder: "📋",
+    link: "https://github.com/razanakoto-carlos/nexboard",
+    liveLink: null,
+  },
   {
     title: "Expense Tracker",
     tag: "Projet personnel",
@@ -31,18 +50,6 @@ const projects = [
     image: proj5,
     placeholder: "🟩",
     link: "https://github.com/razanakoto-carlos/wordle-clone",
-    liveLink: null,
-  },
-  {
-    title: "Mini Trello",
-    tag: "Projet personnel",
-    date: "2026",
-    description:
-      "Drag-and-drop entre colonnes (Todo / In Progress / Done). Backend structuré en couches : routes → controllers → services. Schéma Prisma avec relations Board → Column → Card.",
-    techs: ["React", "Node.js", "Prisma", "PostgreSQL"],
-    image: proj4,
-    placeholder: "📋",
-    link: "https://github.com/razanakoto-carlos/mini-trello",
     liveLink: null,
   },
   {

@@ -23,8 +23,10 @@ const ExternalLinkIcon = () => (
 export default function ProjectCard({ project }) {
   const [expanded, setExpanded] = useState(false);
 
-  const visibleTags = project.techs.slice(0, MAX_TAGS);
-  //   const extraCount = project.techs.length - MAX_TAGS;
+  const visibleTags = expanded
+  ? project.techs
+  : project.techs.slice(0, MAX_TAGS);
+  const extraCount = project.techs.length - MAX_TAGS;
 
   return (
     <div className="bg-white/[0.03] border border-white/10 rounded-xl overflow-hidden flex flex-col hover:border-white/20 transition-colors duration-300">
@@ -68,11 +70,14 @@ export default function ProjectCard({ project }) {
               {tech}
             </span>
           ))}
-          {/* {extraCount > 0 && (
-            <span className="font-mono text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded">
+          {extraCount > 0 && !expanded && (
+            <button
+              onClick={() => setExpanded(true)}
+              className="font-mono text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded hover:text-white"
+            >
               +{extraCount} more
-            </span>
-          )} */}
+            </button>
+          )}
         </div>
 
         {/* Description */}
