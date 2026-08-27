@@ -1,5 +1,5 @@
 import React from "react";
-import aboutImg from "../assets/about4.jpg";
+import aboutImg from "../assets/abstract.jpg";
 
 export default function About() {
   const stats = [
