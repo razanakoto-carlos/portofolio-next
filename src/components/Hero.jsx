@@ -1,31 +1,43 @@
 import React, { useEffect, useState } from "react";
+import {
+  AnimatePresence,
+  MotionConfig,
+  motion as Motion,
+  useReducedMotion,
+} from "framer-motion";
 import { AiFillLinkedin, AiFillGithub, AiFillFacebook } from "react-icons/ai";
-import profilePic from "../assets/hero.png"; // ← ton image
+import { FiArrowDown, FiArrowRight, FiDownload } from "react-icons/fi";
 
 const words = ["FullStack JS", "Frontend Dev", "Backend Dev"];
 
+const socials = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/carlos-razanakoto-9013b2342", icon: <AiFillLinkedin aria-hidden="true" /> },
+  { label: "GitHub",   href: "https://github.com/razanakoto-carlos",                    icon: <AiFillGithub aria-hidden="true" />   },
+  { label: "Facebook", href: "https://www.facebook.com/carlos.dev.24",                  icon: <AiFillFacebook aria-hidden="true" /> },
+];
+
+// Apparition en cascade : chaque bloc gère sa propre animation (délai selon son rang)
+const fadeUp = (i) => ({
+  initial:    { opacity: 0, y: 20 },
+  animate:    { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay: 0.1 + i * 0.09, ease: [0.22, 1, 0.36, 1] },
+});
+
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900";
+
 export default function Hero() {
-  const [index, setIndex]     = useState(0);
-  const [visible, setVisible] = useState(true);
-  const [mounted, setMounted] = useState(false);
+  const [index, setIndex] = useState(0);
+  const reduceMotion = useReducedMotion();
 
-  // Animation d'entrée au montage
+  // Rotation du titre animé (désactivée si l'utilisateur réduit les animations)
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 80);
-    return () => clearTimeout(t);
-  }, []);
-
-  // Rotation du titre animé
-  useEffect(() => {
+    if (reduceMotion) return;
     const interval = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setIndex((i) => (i + 1) % words.length);
-        setVisible(true);
-      }, 300);
-    }, 2200);
+      setIndex((i) => (i + 1) % words.length);
+    }, 2600);
     return () => clearInterval(interval);
-  }, []);
+  }, [reduceMotion]);
 
   const scrollTo = (e, href) => {
     e.preventDefault();
@@ -33,146 +45,144 @@ export default function Hero() {
   };
 
   return (
-    <section
-      id="accueil"
-      className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col-reverse sm:flex-row items-center justify-between gap-12"
-    >
-      {/* ── Colonne texte ── */}
-      <div
-        className="flex-1 transition-all duration-700 ease-out"
-        style={{
-          opacity:   mounted ? 1 : 0,
-          transform: mounted ? "translateY(0)" : "translateY(24px)",
-        }}
+    <MotionConfig reducedMotion="user">
+      <section
+        id="accueil"
+        className="relative isolate overflow-hidden -mt-16"
       >
-        <p className="font-mono text-emerald-400 text-sm mb-3 tracking-wide">
-          Bonjour, je suis
-        </p>
-
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3">
-          Razanakoto<br />Carlos.
-        </h1>
-
-        <p className="font-mono text-xl sm:text-2xl lg:text-3xl text-slate-400 mb-5">
-          Développeur{" "}
-          <span
-            className="text-emerald-400 transition-opacity duration-300"
-            style={{ opacity: visible ? 1 : 0 }}
-          >
-            {words[index]}
-          </span>
-        </p>
-
-        <p className="text-slate-400 text-base leading-relaxed max-w-lg mb-8">
-          Je construis des expériences web robustes et accessibles — des
-          interfaces réactives jusqu'aux APIs bien structurées. Des solutions
-          concrètes, un projet à la fois.
-        </p>
-
-        <div className="flex flex-wrap gap-4 mb-8">
-          <a
-            href="/CV_CARLOS_FULLSTACK_JS.pdf"
-            download
-            className="font-mono text-sm text-emerald-400 border border-emerald-400 px-6 py-3 rounded-md hover:bg-emerald-400/10 transition-colors duration-200"
-          >
-            Télécharger CV
-          </a>
-          <a
-            href="#projets"
-            onClick={(e) => scrollTo(e, "#projets")}
-            className="font-mono text-sm text-slate-400 border border-white/10 px-6 py-3 rounded-md hover:border-slate-400 hover:text-white transition-all duration-200"
-          >
-            Voir mes projets
-          </a>
-        </div>
-
-        <div className="flex gap-4 sm:gap-5 text-slate-500">
-          <a
-            href="https://www.linkedin.com/in/carlos-razanakoto-9013b2342"
-            target="_blank" rel="noopener noreferrer"
-            className="text-2xl hover:text-emerald-400 transition-colors duration-200"
-            aria-label="LinkedIn"
-          >
-            <AiFillLinkedin />
-          </a>
-          <a
-            href="https://github.com/razanakoto-carlos"
-            target="_blank" rel="noopener noreferrer"
-            className="text-2xl hover:text-emerald-400 transition-colors duration-200"
-            aria-label="GitHub"
-          >
-            <AiFillGithub />
-          </a>
-          <a
-            href="https://www.facebook.com/carlos.dev.24"
-            target="_blank" rel="noopener noreferrer"
-            className="text-2xl hover:text-emerald-400 transition-colors duration-200"
-            aria-label="Facebook"
-          >
-            <AiFillFacebook />
-          </a>
-        </div>
-      </div>
-
-      {/* ── Colonne photo ── */}
-      <div
-        className="flex-shrink-0 transition-all duration-700 ease-out"
-        style={{
-          opacity:        mounted ? 1 : 0,
-          transform:      mounted ? "translateY(0)" : "translateY(24px)",
-          transitionDelay: "150ms",
-        }}
-      >
-        <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
-
-          {/* Anneau rotatif émeraude */}
+        {/* ── Décor : grille de points + halos (remonte sous la navbar transparente) ── */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{
+            maskImage: "linear-gradient(to bottom, black 70%, transparent)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent)",
+          }}
+        >
           <div
-            className="absolute -inset-3 rounded-full animate-spin"
+            className="absolute inset-0"
             style={{
-              animationDuration: "10s",
-              background:
-                "conic-gradient(from 0deg, transparent 0deg 200deg, #34d399 200deg 270deg, transparent 270deg 360deg)",
-              WebkitMask:
-                "radial-gradient(farthest-side, transparent calc(100% - 4px), black calc(100% - 4px))",
-              mask:
-                "radial-gradient(farthest-side, transparent calc(100% - 4px), black calc(100% - 4px))",
+              backgroundImage: "radial-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px)",
+              backgroundSize: "24px 24px",
+              maskImage: "radial-gradient(ellipse 70% 60% at 30% 40%, black, transparent)",
+              WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 30% 40%, black, transparent)",
             }}
           />
-
-          {/* Lueur douce derrière */}
-          <div className="absolute inset-0 rounded-full bg-emerald-400/10 blur-2xl scale-110 pointer-events-none" />
-
-          {/* Cercle photo */}
-          <div className="relative w-full h-full rounded-full overflow-hidden border border-white/10 bg-slate-800/40 p-3">
-            <img
-              src={profilePic}
-              alt="Carlos Razanakoto"
-              className="
-                w-full h-full
-                object-cover object-top
-                scale-110
-                transition-transform duration-500 ease-out
-                hover:scale-105
-              "
-            />
-            {/* Fondu bas pour s'intégrer au fond slate-900 */}
-            <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-slate-900/50 to-transparent pointer-events-none" />
-          </div>
-
-          {/* Badge Frontend */}
-          <div className="absolute top-4 -left-2 sm:-left-5 bg-slate-900/95 border border-white/10 rounded-lg px-3 py-1.5 flex items-center gap-2 shadow-lg backdrop-blur-sm">
-            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-            <span className="text-white text-xs font-medium font-mono">Frontend</span>
-          </div>
-
-          {/* Badge Backend */}
-          <div className="absolute bottom-6 -right-2 sm:-right-5 bg-slate-900/95 border border-white/10 rounded-lg px-3 py-1.5 flex items-center gap-2 shadow-lg backdrop-blur-sm">
-            <div className="w-2 h-2 bg-indigo-400 rounded-full animate-pulse" />
-            <span className="text-white text-xs font-medium font-mono">Backend</span>
-          </div>
-
+          <div className="absolute -top-32 right-[-15%] h-104 w-104 rounded-full bg-emerald-400/10 blur-3xl sm:h-136 sm:w-136" />
+          <div className="absolute bottom-0 left-[-10%] h-88 w-88 rounded-full bg-indigo-500/10 blur-3xl" />
         </div>
-      </div>
-    </section>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[min(100svh,52rem)] flex items-center pt-32 pb-20 sm:pt-36 sm:pb-24">
+          <div className="w-full max-w-3xl">
+            <Motion.p
+              {...fadeUp(0)}
+              className="flex items-center gap-3 font-mono text-emerald-400 text-sm tracking-wide mb-5"
+            >
+              <span aria-hidden="true" className="h-px w-8 bg-emerald-400/60" />
+              Bonjour, je suis
+            </Motion.p>
+
+            <Motion.h1
+              {...fadeUp(1)}
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05] text-balance mb-5"
+            >
+              Razanakoto Carlos<span className="text-emerald-400">.</span>
+            </Motion.h1>
+
+            <Motion.p
+              {...fadeUp(2)}
+              className="font-mono text-lg sm:text-2xl text-slate-300 mb-6"
+            >
+              <span className="sr-only">Développeur FullStack JS, Frontend et Backend</span>
+              <span aria-hidden="true" className="inline-flex items-baseline gap-2">
+                Développeur
+                <span className="relative inline-flex overflow-hidden min-w-[12ch]">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <Motion.span
+                      key={words[index]}
+                      className="text-emerald-400"
+                      initial={{ y: "100%", opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: "-100%", opacity: 0 }}
+                      transition={{ duration: 0.35, ease: "easeOut" }}
+                    >
+                      {words[index]}
+                    </Motion.span>
+                  </AnimatePresence>
+                </span>
+                <span className="text-emerald-400/70 animate-pulse motion-reduce:animate-none">_</span>
+              </span>
+            </Motion.p>
+
+            <Motion.p
+              {...fadeUp(3)}
+              className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mb-10"
+            >
+              Je construis des expériences web robustes et accessibles — des
+              interfaces réactives jusqu'aux APIs bien structurées. Des solutions
+              concrètes, un projet à la fois.
+            </Motion.p>
+
+            <Motion.div {...fadeUp(4)} className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10">
+              <a
+                href="/CV_CARLOS_FULLSTACK_JS.pdf"
+                download
+                className={`group inline-flex items-center justify-center gap-2 min-h-12 px-6 rounded-md bg-emerald-400 text-slate-900 font-mono text-sm font-semibold shadow-lg shadow-emerald-400/10 hover:bg-emerald-300 transition-colors duration-200 ${focusRing}`}
+              >
+                <FiDownload aria-hidden="true" className="transition-transform duration-200 group-hover:translate-y-0.5" />
+                Télécharger CV
+              </a>
+              <a
+                href="#projets"
+                onClick={(e) => scrollTo(e, "#projets")}
+                className={`group inline-flex items-center justify-center gap-2 min-h-12 px-6 rounded-md border border-white/15 text-slate-200 font-mono text-sm hover:border-emerald-400/50 hover:text-white hover:bg-white/5 transition-colors duration-200 ${focusRing}`}
+              >
+                Voir mes projets
+                <FiArrowRight aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+            </Motion.div>
+
+            <Motion.div {...fadeUp(5)} className="flex items-center gap-4">
+              <span aria-hidden="true" className="h-px w-8 bg-white/15" />
+              <ul className="flex items-center gap-1 -ml-2">
+                {socials.map(({ label, href, icon }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className={`inline-flex items-center justify-center w-11 h-11 rounded-md text-2xl text-slate-400 hover:text-emerald-400 hover:bg-white/5 transition-colors duration-200 ${focusRing}`}
+                    >
+                      {icon}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </Motion.div>
+          </div>
+        </div>
+
+        {/* ── Indicateur de défilement ── */}
+        <Motion.a
+          href="#a-propos"
+          onClick={(e) => scrollTo(e, "#a-propos")}
+          aria-label="Aller à la section À propos"
+          className={`hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 rounded-md p-2 font-mono text-[11px] tracking-widest text-slate-500 hover:text-emerald-400 transition-colors duration-200 ${focusRing}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.6 }}
+        >
+          défiler
+          <Motion.span
+            aria-hidden="true"
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <FiArrowDown />
+          </Motion.span>
+        </Motion.a>
+      </section>
+    </MotionConfig>
   );
 }

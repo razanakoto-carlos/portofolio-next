@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body{
   background-color: #20242d;
-  font-family: "Poppins","sans-serif";
-  font-weight: 800;
 }
 
-span,
 .primary-color{
   background-image: linear-gradient(to right,#dd32f3,#ce90cb);
   -webkit-background-clip: text;
