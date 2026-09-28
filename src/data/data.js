@@ -1,6 +1,16 @@
 const experiences = [
   {
-    title: "Étudiant M1 Informatique",
+    title: "Participant – Orange Summer Challenge 2026",
+    company: "Orange Digital Center",
+    dates: "Juillet 2026 – Présent",
+    bullets: [
+      "Programme d'innovation de 4 mois (6 juillet – novembre 2026).",
+      "Conception et développement d'une solution numérique en équipe.",
+    ],
+    current: true,
+  },
+  {
+    title: "Étudiant M2 Informatique",
     company: "IS-INFO, Ampasamadinika",
     dates: "2023 – Présent",
     bullets: [

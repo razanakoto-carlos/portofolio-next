@@ -25,7 +25,7 @@ export default function About() {
         {/* Texte */}
         <div>
           <p className="text-slate-400 leading-loose mb-4">
-            Étudiant en fin de M1 Informatique, je me spécialise dans le
+            Étudiant en M2 Informatique, je me spécialise dans le
             développement web fullstack avec JavaScript/TypeScript, React,
             Node.js et PHP/Laravel.
           </p>
