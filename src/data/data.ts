@@ -1,4 +1,12 @@
-const experiences = [
+export interface Experience {
+  title: string;
+  company: string;
+  dates: string;
+  bullets: string[];
+  current: boolean;
+}
+
+const experiences: Experience[] = [
   {
     title: "Participant – Orange Summer Challenge 2026",
     company: "Orange Digital Center",
@@ -45,6 +53,6 @@ const experiences = [
 ];
 
 
-export function getExperiences() {
+export function getExperiences(): Experience[] {
   return experiences;
 }

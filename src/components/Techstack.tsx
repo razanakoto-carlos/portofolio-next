@@ -30,7 +30,7 @@ export default function TechStack() {
     <section id="stack" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       {/* Label de section */}
       <p className="font-mono text-emerald-400 light:text-emerald-700 text-xs tracking-widest mb-2">
-        // outils & technologies
+        {"// outils & technologies"}
       </p>
       <h2 className="text-2xl font-bold text-white border-b border-white/10 light:text-slate-900 light:border-slate-200 pb-4 mb-12">
         Tech Stack

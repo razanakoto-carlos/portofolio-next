@@ -15,7 +15,7 @@ export default function About() {
     >
       {/* Label de section */}
       <p className="font-mono text-emerald-400 light:text-emerald-700 text-xs tracking-widest mb-2">
-        // qui suis-je
+        {"// qui suis-je"}
       </p>
       <h2 className="text-2xl font-bold text-white border-b border-white/10 light:text-slate-900 light:border-slate-200 pb-4 mb-12">
         À propos de moi
@@ -62,7 +62,7 @@ export default function About() {
         </div>
         <div className="w-full aspect-square bg-white/3 border border-white/10 light:bg-white light:border-slate-200 light:shadow-sm rounded-2xl overflow-hidden flex items-center justify-center">
           <img
-            src={aboutImg}
+            src={aboutImg.src}
             alt="Carlos Razanakoto"
             className="w-full h-full object-cover object-top grayscale-25 brightness-75 light:brightness-95"
           />

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import {
   AnimatePresence,
@@ -17,10 +19,10 @@ const socials = [
 ];
 
 // Apparition en cascade : chaque bloc gère sa propre animation (délai selon son rang)
-const fadeUp = (i) => ({
+const fadeUp = (i: number) => ({
   initial:    { opacity: 0, y: 20 },
   animate:    { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay: 0.1 + i * 0.09, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.6, delay: 0.1 + i * 0.09, ease: [0.22, 1, 0.36, 1] as const },
 });
 
 const focusRing =
@@ -39,7 +41,7 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, [reduceMotion]);
 
-  const scrollTo = (e, href) => {
+  const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };

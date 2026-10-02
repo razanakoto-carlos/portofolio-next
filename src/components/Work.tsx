@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectCard from "./ProjectCard";
+import ProjectCard, { type Project } from "./ProjectCard";
 
 import proj1 from "../assets/conge.jpg";
 import proj2 from "../assets/instat2.jpg";
@@ -8,7 +8,7 @@ import proj4 from "../assets/moveCard.png";
 import proj5 from "../assets/guess.jpg";
 import proj6 from "../assets/expense.jpg";
 
-const projects = [
+const projects: Project[] = [
     {
     title: "Nexboard",
     tag: "Projet personnel",
@@ -97,7 +97,7 @@ export default function Work() {
       className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
     >
       <p className="font-mono text-emerald-400 light:text-emerald-700 text-xs tracking-widest mb-2">
-        // ce que j'ai construit
+        {"// ce que j'ai construit"}
       </p>
       <h2 className="text-2xl font-bold text-white border-b border-white/10 light:text-slate-900 light:border-slate-200 pb-4 mb-10">
         Mes Projets
