@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function SectionHeading({ title, align = "left" }) {
+interface SectionHeadingProps {
+  title: string;
+  align?: "left" | "center";
+}
+
+export default function SectionHeading({ title, align = "left" }: SectionHeadingProps) {
   const centered = align === "center";
 
   return (

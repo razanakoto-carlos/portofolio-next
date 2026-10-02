@@ -1,4 +1,19 @@
+"use client";
+
 import React, { useState } from "react";
+import type { StaticImageData } from "next/image";
+
+export interface Project {
+  title: string;
+  tag: string;
+  date: string;
+  description: string;
+  techs: string[];
+  image: StaticImageData | null;
+  placeholder: string;
+  link: string;
+  liveLink: string | null;
+}
 
 const MAX_TAGS = 3;
 
@@ -20,7 +35,7 @@ const ExternalLinkIcon = () => (
   </svg>
 );
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project }: { project: Project }) {
   const [expanded, setExpanded] = useState(false);
 
   const visibleTags = expanded
@@ -39,7 +54,7 @@ export default function ProjectCard({ project }) {
       >
         {project.image ? (
           <img
-            src={project.image}
+            src={project.image.src}
             alt={project.title}
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
           />

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import ThemeToggle from "./ThemeToggle";
@@ -21,7 +23,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleClick = (e, href) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     setNav(false);

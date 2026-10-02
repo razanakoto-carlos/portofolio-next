@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+"use client";
+
+import React, { useRef, type ReactNode } from "react";
 import {
   motion,
   useScroll,
@@ -33,8 +35,8 @@ function ScrollProgressBar() {
 }
 
 // ── Each section fades up + reveals on scroll ────────────────────
-function Section({ children, delay = 0 }) {
-  const ref = useRef(null);
+function Section({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "start 0.6"],
@@ -59,7 +61,7 @@ function Section({ children, delay = 0 }) {
 
 // ── Divider that scales in from left ────────────────────────────
 function Divider() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "start 0.75"],
