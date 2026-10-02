@@ -29,13 +29,13 @@ export default function ProjectCard({ project }) {
   const extraCount = project.techs.length - MAX_TAGS;
 
   return (
-    <div className="bg-white/[0.03] border border-white/10 rounded-xl overflow-hidden flex flex-col hover:border-white/20 transition-colors duration-300">
+    <div className="bg-white/[0.03] border border-white/10 rounded-xl overflow-hidden flex flex-col hover:border-white/20 light:bg-white light:border-slate-200 light:shadow-sm light:hover:border-slate-300 transition-colors duration-300">
       {/* Image */}
       <a
         href={project.link}
         target="_blank"
         rel="noreferrer"
-        className="group block w-full h-40 overflow-hidden bg-white/[0.02] flex-shrink-0"
+        className="group block w-full h-40 overflow-hidden bg-white/[0.02] light:bg-slate-100 flex-shrink-0"
       >
         {project.image ? (
           <img
@@ -52,10 +52,10 @@ export default function ProjectCard({ project }) {
 
       {/* Body */}
       <div className="p-4 flex flex-col gap-2 flex-1">
-        <p className="font-mono text-emerald-400 text-[10px] tracking-widest">
+        <p className="font-mono text-emerald-400 light:text-emerald-700 text-[10px] tracking-widest">
           {project.tag}
         </p>
-        <h3 className="text-white font-semibold text-sm leading-snug">
+        <h3 className="text-white light:text-slate-900 font-semibold text-sm leading-snug">
           {project.title}
         </h3>
         <p className="text-slate-500 text-[11px] font-mono">{project.date}</p>
@@ -65,7 +65,7 @@ export default function ProjectCard({ project }) {
           {visibleTags.map((tech) => (
             <span
               key={tech}
-              className="font-mono text-[10px] text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded"
+              className="font-mono text-[10px] text-emerald-400 bg-emerald-400/10 light:text-emerald-700 light:bg-emerald-500/10 px-2 py-0.5 rounded"
             >
               {tech}
             </span>
@@ -73,7 +73,7 @@ export default function ProjectCard({ project }) {
           {extraCount > 0 && !expanded && (
             <button
               onClick={() => setExpanded(true)}
-              className="font-mono text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded hover:text-white"
+              className="font-mono text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded hover:text-white light:bg-slate-100 light:text-slate-600 light:hover:text-slate-900"
             >
               +{extraCount} more
             </button>
@@ -82,7 +82,7 @@ export default function ProjectCard({ project }) {
 
         {/* Description */}
         <p
-          className={`text-slate-400 text-xs leading-relaxed ${expanded ? "" : "line-clamp-2"}`}
+          className={`text-slate-400 light:text-slate-600 text-xs leading-relaxed ${expanded ? "" : "line-clamp-2"}`}
         >
           {project.description}
         </p>
@@ -95,7 +95,7 @@ export default function ProjectCard({ project }) {
             href={project.link}
             target="_blank"
             rel="noreferrer"
-            className="flex-1 flex items-center justify-center gap-1.5 text-xs font-mono py-2 rounded-lg border border-white/10 text-white hover:bg-white/5 transition-colors"
+            className="flex-1 flex items-center justify-center gap-1.5 text-xs font-mono py-2 rounded-lg border border-white/10 text-white hover:bg-white/5 light:border-slate-200 light:text-slate-800 light:hover:bg-slate-50 transition-colors"
           >
             <GitHubIcon />
             Code
@@ -116,7 +116,7 @@ export default function ProjectCard({ project }) {
 
         <button
           onClick={() => setExpanded(!expanded)}
-          className="w-full text-xs text-slate-500 py-2 rounded-lg border border-white/[0.06] hover:text-slate-300 hover:border-white/10 transition-colors"
+          className="w-full text-xs text-slate-500 py-2 rounded-lg border border-white/[0.06] hover:text-slate-300 hover:border-white/10 light:border-slate-200 light:hover:text-slate-800 light:hover:border-slate-300 transition-colors"
         >
           {expanded ? "Show Less" : "View More Details"}
         </button>

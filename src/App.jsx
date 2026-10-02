@@ -27,7 +27,7 @@ function ScrollProgressBar() {
   return (
     <motion.div
       style={{ scaleX, originX: 0 }}
-      className="fixed top-0 left-0 right-0 h-[2px] bg-emerald-400 z-[9999]"
+      className="fixed top-0 left-0 right-0 h-[2px] bg-emerald-400 light:bg-emerald-500 z-[9999]"
     />
   );
 }
@@ -71,7 +71,7 @@ function Divider() {
     <div ref={ref} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.hr
         style={{ scaleX, opacity, originX: 0 }}
-        className="border-white/10"
+        className="border-white/10 light:border-slate-200"
       />
     </div>
   );
@@ -79,7 +79,7 @@ function Divider() {
 
 export default function App() {
   return (
-    <div className="bg-slate-900 min-h-screen text-slate-400 antialiased">
+    <div className="bg-slate-900 min-h-screen text-slate-400 light:bg-slate-50 light:text-slate-600 antialiased">
       <ScrollProgressBar />
       <Navbar />
 

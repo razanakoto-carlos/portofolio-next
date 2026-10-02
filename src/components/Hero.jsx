@@ -24,7 +24,7 @@ const fadeUp = (i) => ({
 });
 
 const focusRing =
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900";
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 light:focus-visible:ring-emerald-600 light:focus-visible:ring-offset-slate-50";
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -62,36 +62,36 @@ export default function Hero() {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: "radial-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px)",
+              backgroundImage: "radial-gradient(var(--hero-dot, rgb(255 255 255 / 0.07)) 1px, transparent 1px)",
               backgroundSize: "24px 24px",
               maskImage: "radial-gradient(ellipse 70% 60% at 30% 40%, black, transparent)",
               WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 30% 40%, black, transparent)",
             }}
           />
-          <div className="absolute -top-32 right-[-15%] h-104 w-104 rounded-full bg-emerald-400/10 blur-3xl sm:h-136 sm:w-136" />
-          <div className="absolute bottom-0 left-[-10%] h-88 w-88 rounded-full bg-indigo-500/10 blur-3xl" />
+          <div className="absolute -top-32 right-[-15%] h-104 w-104 rounded-full bg-emerald-400/10 light:bg-emerald-300/20 blur-3xl sm:h-136 sm:w-136" />
+          <div className="absolute bottom-0 left-[-10%] h-88 w-88 rounded-full bg-indigo-500/10 light:bg-indigo-300/25 blur-3xl" />
         </div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[min(100svh,52rem)] flex items-center pt-32 pb-20 sm:pt-36 sm:pb-24">
           <div className="w-full max-w-3xl">
             <Motion.p
               {...fadeUp(0)}
-              className="flex items-center gap-3 font-mono text-emerald-400 text-sm tracking-wide mb-5"
+              className="flex items-center gap-3 font-mono text-emerald-400 light:text-emerald-700 text-sm tracking-wide mb-5"
             >
-              <span aria-hidden="true" className="h-px w-8 bg-emerald-400/60" />
+              <span aria-hidden="true" className="h-px w-8 bg-emerald-400/60 light:bg-emerald-600/60" />
               Bonjour, je suis
             </Motion.p>
 
             <Motion.h1
               {...fadeUp(1)}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05] text-balance mb-5"
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white light:text-slate-900 tracking-tight leading-[1.05] text-balance mb-5"
             >
-              Razanakoto Carlos<span className="text-emerald-400">.</span>
+              Razanakoto Carlos<span className="text-emerald-400 light:text-emerald-500">.</span>
             </Motion.h1>
 
             <Motion.p
               {...fadeUp(2)}
-              className="font-mono text-lg sm:text-2xl text-slate-300 mb-6"
+              className="font-mono text-lg sm:text-2xl text-slate-300 light:text-slate-700 mb-6"
             >
               <span className="sr-only">Développeur FullStack JS, Frontend et Backend</span>
               <span aria-hidden="true" className="inline-flex items-baseline gap-2">
@@ -100,7 +100,7 @@ export default function Hero() {
                   <AnimatePresence mode="wait" initial={false}>
                     <Motion.span
                       key={words[index]}
-                      className="text-emerald-400"
+                      className="text-emerald-400 light:text-emerald-700"
                       initial={{ y: "100%", opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       exit={{ y: "-100%", opacity: 0 }}
@@ -110,13 +110,13 @@ export default function Hero() {
                     </Motion.span>
                   </AnimatePresence>
                 </span>
-                <span className="text-emerald-400/70 animate-pulse motion-reduce:animate-none">_</span>
+                <span className="text-emerald-400/70 light:text-emerald-600/70 animate-pulse motion-reduce:animate-none">_</span>
               </span>
             </Motion.p>
 
             <Motion.p
               {...fadeUp(3)}
-              className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mb-10"
+              className="text-slate-400 light:text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl mb-10"
             >
               Je construis des expériences web robustes et accessibles — des
               interfaces réactives jusqu'aux APIs bien structurées. Des solutions
@@ -127,7 +127,7 @@ export default function Hero() {
               <a
                 href="/CV_CARLOS_FULLSTACK_JS.pdf"
                 download
-                className={`group inline-flex items-center justify-center gap-2 min-h-12 px-6 rounded-md bg-emerald-400 text-slate-900 font-mono text-sm font-semibold shadow-lg shadow-emerald-400/10 hover:bg-emerald-300 transition-colors duration-200 ${focusRing}`}
+                className={`group inline-flex items-center justify-center gap-2 min-h-12 px-6 rounded-md bg-emerald-400 text-slate-900 font-mono text-sm font-semibold shadow-lg shadow-emerald-400/10 hover:bg-emerald-300 light:bg-emerald-500 light:shadow-emerald-600/20 light:hover:bg-emerald-400 transition-colors duration-200 ${focusRing}`}
               >
                 <FiDownload aria-hidden="true" className="transition-transform duration-200 group-hover:translate-y-0.5" />
                 Télécharger CV
@@ -135,7 +135,7 @@ export default function Hero() {
               <a
                 href="#projets"
                 onClick={(e) => scrollTo(e, "#projets")}
-                className={`group inline-flex items-center justify-center gap-2 min-h-12 px-6 rounded-md border border-white/15 text-slate-200 font-mono text-sm hover:border-emerald-400/50 hover:text-white hover:bg-white/5 transition-colors duration-200 ${focusRing}`}
+                className={`group inline-flex items-center justify-center gap-2 min-h-12 px-6 rounded-md border border-white/15 text-slate-200 font-mono text-sm hover:border-emerald-400/50 hover:text-white hover:bg-white/5 light:border-slate-300 light:text-slate-700 light:hover:border-emerald-600/50 light:hover:text-slate-900 light:hover:bg-white transition-colors duration-200 ${focusRing}`}
               >
                 Voir mes projets
                 <FiArrowRight aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1" />
@@ -143,7 +143,7 @@ export default function Hero() {
             </Motion.div>
 
             <Motion.div {...fadeUp(5)} className="flex items-center gap-4">
-              <span aria-hidden="true" className="h-px w-8 bg-white/15" />
+              <span aria-hidden="true" className="h-px w-8 bg-white/15 light:bg-slate-300" />
               <ul className="flex items-center gap-1 -ml-2">
                 {socials.map(({ label, href, icon }) => (
                   <li key={label}>
@@ -152,7 +152,7 @@ export default function Hero() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className={`inline-flex items-center justify-center w-11 h-11 rounded-md text-2xl text-slate-400 hover:text-emerald-400 hover:bg-white/5 transition-colors duration-200 ${focusRing}`}
+                      className={`inline-flex items-center justify-center w-11 h-11 rounded-md text-2xl text-slate-400 hover:text-emerald-400 hover:bg-white/5 light:text-slate-500 light:hover:text-emerald-700 light:hover:bg-slate-900/5 transition-colors duration-200 ${focusRing}`}
                     >
                       {icon}
                     </a>
@@ -168,7 +168,7 @@ export default function Hero() {
           href="#a-propos"
           onClick={(e) => scrollTo(e, "#a-propos")}
           aria-label="Aller à la section À propos"
-          className={`hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 rounded-md p-2 font-mono text-[11px] tracking-widest text-slate-500 hover:text-emerald-400 transition-colors duration-200 ${focusRing}`}
+          className={`hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 rounded-md p-2 font-mono text-[11px] tracking-widest text-slate-500 hover:text-emerald-400 light:hover:text-emerald-700 transition-colors duration-200 ${focusRing}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.6 }}

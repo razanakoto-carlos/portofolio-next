@@ -21,3 +21,31 @@ body{
 .bg-primary-color{
   background-image: linear-gradient(to right,#6b2b72,#a5079d);
 }
+
+/* ── Light theme ────────────────────────────────────────────────
+   Dark stays the default and is never modified: light styles are
+   added with the `light:` variant, which only matches under
+   <html data-theme="light"> (set by useTheme / index.html). */
+@custom-variant light ([data-theme="light"] &);
+
+[data-theme="light"] {
+  color-scheme: light;
+  --hero-dot: rgb(15 23 42 / 0.09);
+}
+
+[data-theme="light"] body {
+  background-color: #f8fafc;
+}
+
+/* While switching themes, suppress per-element color transitions so the
+   whole page changes at once (the cross-fade comes from the View Transition). */
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+}

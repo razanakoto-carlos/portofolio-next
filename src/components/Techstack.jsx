@@ -4,22 +4,22 @@ import { FaServer, FaDatabase, FaTools } from "react-icons/fa";
 
 const stack = [
   {
-    icon: <SiReact className="text-cyan-400" size={28} />,
+    icon: <SiReact className="text-cyan-400 light:text-cyan-600" size={28} />,
     name: "Frontend",
     techs: ["React", "TypeScript", "Tailwind CSS"],
   },
   {
-    icon: <FaServer className="text-emerald-400" size={26} />,
+    icon: <FaServer className="text-emerald-400 light:text-emerald-600" size={26} />,
     name: "Backend",
     techs: ["Node.js", "Express", "Prisma", "PHP", "Laravel"],
   },
   {
-    icon: <FaDatabase className="text-indigo-400" size={26} />,
+    icon: <FaDatabase className="text-indigo-400 light:text-indigo-500" size={26} />,
     name: "Base de données",
     techs: ["MongoDB","PostgreSQL", "MySQL", "SQLite"],
   },
   {
-    icon: <FaTools className="text-amber-400" size={24} />,
+    icon: <FaTools className="text-amber-400 light:text-amber-600" size={24} />,
     name: "Outils & Pratiques",
     techs: ["Git", "Docker", "REST API", "JWT", "OAuth2", "Figma"],
   },
@@ -29,10 +29,10 @@ export default function TechStack() {
   return (
     <section id="stack" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       {/* Label de section */}
-      <p className="font-mono text-emerald-400 text-xs tracking-widest mb-2">
+      <p className="font-mono text-emerald-400 light:text-emerald-700 text-xs tracking-widest mb-2">
         // outils & technologies
       </p>
-      <h2 className="text-2xl font-bold text-white border-b border-white/10 pb-4 mb-12">
+      <h2 className="text-2xl font-bold text-white border-b border-white/10 light:text-slate-900 light:border-slate-200 pb-4 mb-12">
         Tech Stack
       </h2>
 
@@ -41,18 +41,18 @@ export default function TechStack() {
           <div
             key={name}
             className="
-              group bg-white/[0.03] border border-white/[0.08] rounded-xl p-5
-              hover:border-emerald-400/30 hover:-translate-y-1
+              group bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 light:bg-white light:border-slate-200 light:shadow-sm
+              hover:border-emerald-400/30 hover:-translate-y-1 light:hover:border-emerald-500/40 light:hover:shadow-md
               transition-all duration-300
             "
           >
             <span className="text-2xl mb-3 block">{icon}</span>
-            <p className="font-semibold text-white text-sm mb-3">{name}</p>
+            <p className="font-semibold text-white light:text-slate-900 text-sm mb-3">{name}</p>
             <div className="flex flex-wrap gap-1.5">
               {techs.map((tech) => (
                 <span
                   key={tech}
-                  className="font-mono text-[11px] text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded"
+                  className="font-mono text-[11px] text-emerald-400 bg-emerald-400/10 light:text-emerald-700 light:bg-emerald-500/10 px-2 py-0.5 rounded"
                 >
                   {tech}
                 </span>
