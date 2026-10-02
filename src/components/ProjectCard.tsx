@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import type { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
 export interface Project {
   title: string;
@@ -44,18 +44,20 @@ export default function ProjectCard({ project }: { project: Project }) {
   const extraCount = project.techs.length - MAX_TAGS;
 
   return (
-    <div className="bg-white/[0.03] border border-white/10 rounded-xl overflow-hidden flex flex-col hover:border-white/20 light:bg-white light:border-slate-200 light:shadow-sm light:hover:border-slate-300 transition-colors duration-300">
+    <article className="bg-white/[0.03] border border-white/10 rounded-xl overflow-hidden flex flex-col hover:border-white/20 light:bg-white light:border-slate-200 light:shadow-sm light:hover:border-slate-300 transition-colors duration-300">
       {/* Image */}
       <a
         href={project.link}
         target="_blank"
         rel="noreferrer"
-        className="group block w-full h-40 overflow-hidden bg-white/[0.02] light:bg-slate-100 flex-shrink-0"
+        className="group relative block w-full h-40 overflow-hidden bg-white/[0.02] light:bg-slate-100 flex-shrink-0"
       >
         {project.image ? (
-          <img
-            src={project.image.src}
+          <Image
+            src={project.image}
             alt={project.title}
+            fill
+            sizes="(min-width: 1024px) 307px, (min-width: 640px) 50vw, 100vw"
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
@@ -136,6 +138,6 @@ export default function ProjectCard({ project }: { project: Project }) {
           {expanded ? "Show Less" : "View More Details"}
         </button>
       </div>
-    </div>
+    </article>
   );
 }

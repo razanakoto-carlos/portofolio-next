@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  /* --font-poppins est défini par next/font (app/layout.tsx) sur <html> */
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -48,4 +49,40 @@ body{
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 0.3s;
+}
+
+/* ── Hero : apparition en cascade en CSS ─────────────────────────
+   Mêmes courbes que l'ancienne version framer-motion, mais jouées dès le
+   premier rendu, sans attendre le JavaScript (meilleur LCP).
+   Mouvement réduit : seule l'opacité est animée, comme reducedMotion="user".
+   Départ à 0.01 (identique à l'œil) plutôt qu'à 0 : Chrome ignore pour le LCP un
+   élément peint à opacity 0, le texte du hero ne serait alors jamais mesuré. */
+@keyframes hero-fade-up {
+  from { opacity: 0.01; transform: translateY(20px); }
+}
+
+@keyframes hero-fade-in {
+  from { opacity: 0.01; }
+}
+
+@keyframes hero-bounce {
+  50% { transform: translateY(5px); }
+}
+
+.hero-fade-up {
+  animation: hero-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(0.1s + var(--i, 0) * 0.09s);
+}
+
+.hero-scroll-hint {
+  animation: hero-fade-in 0.6s ease-in-out 1s both;
+}
+
+.hero-bounce {
+  animation: hero-bounce 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-up { animation-name: hero-fade-in; }
+  .hero-bounce { animation: none; }
 }

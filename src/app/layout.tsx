@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Poppins } from "next/font/google";
+import MotionProvider from "../components/MotionProvider";
 import "./globals.css";
+
+// Police auto-hébergée et préchargée (plus de requête bloquante vers Google Fonts)
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-poppins",
+});
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -16,19 +26,13 @@ const themeScript = `try {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     // data-theme est posé par le script avant l'hydratation
-    <html lang="fr" suppressHydrationWarning>
+    <html lang="fr" className={poppins.variable} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        {/* Root layout: the font applies to every page (rule targets the Pages Router) */}
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }
