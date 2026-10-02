@@ -1,5 +1,56 @@
 import React from "react";
-import aboutImg from "../assets/abstract.jpg";
+
+// Profil affiché comme un fichier de code (carte de droite)
+const profile: [key: string, value: string | string[]][] = [
+  ["role",      "Développeur FullStack JS"],
+  ["location",  "Antananarivo, Madagascar"],
+  ["education", "M2 Informatique"],
+  ["stack",     ["React", "TypeScript", "Node.js", "Laravel"]],
+  ["currently", "Orange Summer Challenge 2026"],
+  ["openTo",    ["freelance", "stage", "CDI"]],
+];
+
+const Punct = ({ children }: { children: React.ReactNode }) => (
+  <span className="text-slate-500">{children}</span>
+);
+
+const Str = ({ value }: { value: string }) => (
+  <span className="text-emerald-400 light:text-emerald-700">"{value}"</span>
+);
+
+// Tableau sur une ligne s'il est court, sinon un élément par ligne (lisible sur mobile)
+function ArrayValue({ items }: { items: string[] }) {
+  if (items.length <= 3) {
+    return (
+      <>
+        <Punct>[</Punct>
+        {items.map((item, i) => (
+          <React.Fragment key={item}>
+            <Str value={item} />
+            {i < items.length - 1 && <Punct>, </Punct>}
+          </React.Fragment>
+        ))}
+        <Punct>]</Punct>
+      </>
+    );
+  }
+  return (
+    <>
+      <Punct>[</Punct>
+      {"\n"}
+      {items.map((item) => (
+        <React.Fragment key={item}>
+          {"    "}
+          <Str value={item} />
+          <Punct>,</Punct>
+          {"\n"}
+        </React.Fragment>
+      ))}
+      {"  "}
+      <Punct>]</Punct>
+    </>
+  );
+}
 
 export default function About() {
   const stats = [
@@ -60,12 +111,46 @@ export default function About() {
             ))}
           </div>
         </div>
-        <div className="w-full aspect-square bg-white/3 border border-white/10 light:bg-white light:border-slate-200 light:shadow-sm rounded-2xl overflow-hidden flex items-center justify-center">
-          <img
-            src={aboutImg.src}
-            alt="Carlos Razanakoto"
-            className="w-full h-full object-cover object-top grayscale-25 brightness-75 light:brightness-95"
-          />
+        {/* Carte « fichier de code » : le profil en bref */}
+        <div className="w-full bg-white/3 border border-white/10 light:bg-white light:border-slate-200 light:shadow-sm rounded-2xl overflow-hidden">
+          <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10 light:border-slate-200">
+            <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full bg-white/10 light:bg-slate-200" />
+            <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full bg-white/10 light:bg-slate-200" />
+            <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full bg-white/10 light:bg-slate-200" />
+            <span className="ml-2 font-mono text-xs text-slate-500">about.ts</span>
+          </div>
+
+          {/* Version lisible pour les lecteurs d'écran ; le code est visuel */}
+          <p className="sr-only">
+            Carlos Razanakoto, développeur FullStack JS à Antananarivo, Madagascar. Étudiant en
+            M2 Informatique. Stack : React, TypeScript, Node.js, Laravel. Actuellement à
+            l'Orange Summer Challenge 2026. Ouvert aux missions freelance, stages et CDI.
+          </p>
+          <pre
+            aria-hidden="true"
+            className="p-4 sm:p-6 font-mono text-xs sm:text-sm leading-relaxed text-slate-300 light:text-slate-700 whitespace-pre-wrap break-words"
+          >
+            <code>
+              <span className="text-indigo-400 light:text-indigo-600">const</span>{" "}
+              <span className="text-white light:text-slate-900">carlos</span> <Punct>=</Punct> <Punct>{"{"}</Punct>
+              {"\n"}
+              {profile.map(([key, value]) => (
+                <React.Fragment key={key}>
+                  {"  "}
+                  <span className="text-cyan-400 light:text-cyan-700">{key}</span>
+                  <Punct>: </Punct>
+                  {Array.isArray(value) ? <ArrayValue items={value} /> : <Str value={value} />}
+                  <Punct>,</Punct>
+                  {"\n"}
+                </React.Fragment>
+              ))}
+              <Punct>{"};"}</Punct>
+              {"\n\n"}
+              <span className="text-indigo-400 light:text-indigo-600">export default</span>{" "}
+              <span className="text-white light:text-slate-900">carlos</span>
+              <Punct>;</Punct>
+            </code>
+          </pre>
         </div>
       </div>
     </section>

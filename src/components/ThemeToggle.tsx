@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AnimatePresence, MotionConfig, motion as Motion } from "framer-motion";
+import { AnimatePresence, MotionConfig, m } from "framer-motion";
 import { FiMoon, FiSun } from "react-icons/fi";
 import useTheme from "../hooks/useTheme";
 
@@ -29,7 +29,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
           </span>
         ) : (
           <AnimatePresence mode="wait" initial={false}>
-            <Motion.span
+            <m.span
               key={theme}
               aria-hidden="true"
               className="flex"
@@ -39,7 +39,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
               transition={{ duration: 0.2, ease: "easeOut" }}
             >
               {isLight ? <FiMoon size={19} /> : <FiSun size={19} />}
-            </Motion.span>
+            </m.span>
           </AnimatePresence>
         )}
       </button>

@@ -68,6 +68,8 @@ export default function Contact() {
               type="text"
               name="name"
               placeholder="Nom complet"
+              aria-label="Nom complet"
+              autoComplete="name"
               required
               className="
                 w-full bg-white/4 border border-white/10 rounded-lg light:bg-slate-50 light:border-slate-300
@@ -80,6 +82,8 @@ export default function Contact() {
               type="email"
               name="email"
               placeholder="Adresse e-mail"
+              aria-label="Adresse e-mail"
+              autoComplete="email"
               required
               className="
                 w-full bg-white/4 border border-white/10 rounded-lg light:bg-slate-50 light:border-slate-300
@@ -92,6 +96,7 @@ export default function Contact() {
               name="message"
               rows={5}
               placeholder="Votre message"
+              aria-label="Votre message"
               required
               className="
                 w-full bg-white/4 border border-white/10 rounded-lg light:bg-slate-50 light:border-slate-300
