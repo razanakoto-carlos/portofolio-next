@@ -19,7 +19,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    onScroll(); // page rechargée en cours de défilement : fond de la navbar dès le départ
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -32,6 +33,7 @@ export default function Navbar() {
   return (
     <>
       <nav
+        aria-label="Navigation principale"
         className={`sticky top-0 z-50 flex justify-between items-center px-4 sm:px-6 lg:px-10 h-16 transition-all duration-300 ${
           scrolled
             ? "bg-slate-900/90 backdrop-blur-md border-b border-white/5 light:bg-slate-50/85 light:border-slate-200"
@@ -73,6 +75,8 @@ export default function Navbar() {
             onClick={() => setNav(!nav)}
             className="md:hidden text-slate-400 hover:text-white light:text-slate-600 light:hover:text-slate-900 transition-colors"
             aria-label="Toggle menu"
+            aria-expanded={nav}
+            aria-controls="mobile-menu"
           >
             {nav ? <AiOutlineClose size={22} /> : <AiOutlineMenu size={22} />}
           </button>
@@ -81,6 +85,8 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       <div
+        id="mobile-menu"
+        inert={!nav} // menu fermé : ses liens hors écran ne sont plus atteignables au clavier
         className={`fixed inset-y-0 left-0 z-40 w-4/5 sm:w-3/5 bg-slate-900 border-r border-white/5 light:bg-white light:border-slate-200 transform transition-transform duration-300 ease-in-out ${
           nav ? "translate-x-0" : "-translate-x-full"
         }`}
